@@ -12,7 +12,7 @@ export default function Login({ providers }) {
             {Object.values(providers).map((provider) => {
                 return <div key={provider.name}>
                     <button onClick={() => {
-                        signIn(provider.id, { callbackUrl: "/" })
+                        signIn(provider.id, { callbackUrl: process.env.NEXTAUTH_URL })
                     }} className="rounded-full font-bold border-2 border-neutral-800 bg-black hover:bg-neutral-900 text-white px-8 py-4 tracking-wide">LOGIN WITH SPOTIFY</button>
                 </div>
             })}

@@ -1,6 +1,7 @@
 import { BuildingLibraryIcon, HeartIcon, HomeIcon, MagnifyingGlassIcon, PlusCircleIcon, RssIcon, SearchIcon } from "@heroicons/react/24/outline"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react";
+import ArdLogo from "@/lib/ArdLogo.js";
 
 export default function Sidebar({ globalPlaylistId, setGlobalPlaylistId }) {
     const { data: session, status } = useSession();
@@ -48,8 +49,8 @@ export default function Sidebar({ globalPlaylistId, setGlobalPlaylistId }) {
             </button>
             <hr className="border-t-[0.1px] border-black" />
             <button className="flex items-center  space-x-2 hover:text-white">
-                <PlusCircleIcon className="w-5 h-5" />
-                <p>Create Playlist</p>
+                <ArdLogo className="w-5 h-5" />
+                <p>ARD</p>
             </button>
             <button className="flex items-center  space-x-2 hover:text-white">
                 <HeartIcon className="w-5 h-5" />

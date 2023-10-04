@@ -60,6 +60,7 @@ export const authOptions = {
             session.user.accessToken = token.accessToken;
             session.user.refreshToken = token.refreshToken
             session.user.username = token.username
+            session.user.image = `https://ui-avatars.com/api/?name=${token.username}`
             return session
         }
 

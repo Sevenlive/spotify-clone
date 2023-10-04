@@ -2,6 +2,9 @@ import { ArrowsRightLeftIcon, SpeakerWaveIcon, } from "@heroicons/react/24/outli
 import { ArrowUturnLeftIcon, BackwardIcon, ForwardIcon, PauseCircleIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react";
+import Progressbar from "./Progressbar";
+import  WebPlayback from './WebPlayback'
+
 
 export default function Player({ globalCurrentTrackId, setGlobalCurrentTrackId, globalIsTrackPlaying, setGlobalIsTrackPlaying }) {
     const [songInfo, setSongInfo] = useState(null)
@@ -82,7 +85,9 @@ export default function Player({ globalCurrentTrackId, setGlobalCurrentTrackId, 
         }
         f();
     }, [globalCurrentTrackId, session])
-    return <div className="h-24 bg-neutral-800 border-t border-neutral-700 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8">
+    return <>
+    <Progressbar></Progressbar>
+    <div className="h-24 bg-neutral-800 border-t border-neutral-700 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8">
         <div className="flex items-center space-x-4">
             {songInfo?.album?.images[0]?.url && <img className="hidden md:inline h-10 w-10" src={songInfo?.album?.images[0]?.url} alt="" />}
             <div className="">
@@ -106,4 +111,8 @@ export default function Player({ globalCurrentTrackId, setGlobalCurrentTrackId, 
             <input type="range" min={0} max={100} className="accent-white hover:accent-green-600 w-14 md:w-28" />
         </div>
     </div>
+    {session && (
+                <WebPlayback token={session.user.accessToken} />
+                            )}
+                            </>
 }

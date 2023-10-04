@@ -36,6 +36,7 @@ export default function Center({ globalPlaylistId, setGlobalPlaylistId, globalPl
 
     useEffect(() => {
         async function f() {
+            console.log(globalPlaylistId);
             if (globalPlaylistId && session && session.user && session.user.accessToken) {
                 let token = session.user.accessToken
                 const response = await fetch(`https://api.spotify.com/v1/playlists/${globalPlaylistId}`, {
@@ -67,6 +68,7 @@ export default function Center({ globalPlaylistId, setGlobalPlaylistId, globalPl
                 <div>
                     <p className="text-white text-sm font-bold">Playlist</p>
                     <h1 className="text-2xl font-extrabold md:text-3xl lg:text-5xl">{globalPlaylistState?.name}</h1>
+                    <span className="text-sm">by {globalPlaylistState?.owner?.display_name}</span>
                 </div>
             </section>
             <div>
